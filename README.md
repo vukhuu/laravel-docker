@@ -3,7 +3,7 @@ Up and running Laravel with Docker with ease
 
 ## Feature highlights
 - Nothing is required on host machine except Docker and Docker Compose
-- Docker compose with `web` service (php7.2), `database` service (mysql 5.6) and `MySql client` service (adminer)
+- Docker Compose with `web` service (php7.2), `database` service (mysql 5.6) and `MySql client` service (adminer)
 - Web service is pre-installed with composer, laravel cli, curl, vim and dnsutils package
 
 ## Code structure
@@ -20,11 +20,16 @@ Up and running Laravel with Docker with ease
 - In case you do not have a Laravel project yet, create one by running `laravel new myfirstproject`.
 - cd into `/code/myfirstproject`, start the web server by running `php artisan serve --host=0.0.0.0 --port=8000` (please notice the part *--host=0.0.0.0*)
 - Access the Laravel web app from host machine by accessing `http://localhost:8000`
-- Set up MySql info for your Laravel app using the following info: `host: db, username: root, password: admin` (this password is set up in `docker-compose.yml`
+- Config MySql for your Laravel app using the following info: `host: db, username: root, password: admin` (this password is set up in `docker-compose.yml`
 
 ## Further installation
 
 - If you would like to install more services such as `redis`, just put the service config into docker-compose.yml and rebuild the containers using `docker-compose build`
+
+## Other info
+
+- The `web` service is derived from the image `php:7.2`
+- Laravel was at 5.8 at the moment this document was written
 
 ## Troubleshooting
 

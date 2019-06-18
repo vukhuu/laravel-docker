@@ -1,0 +1,36 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Unknown </title></head><body>
+<h1 id="laravel-docker">laravel-docker</h1>
+<p>Up and running Laravel with Docker with ease</p>
+<h2 id="feature-highlights">Feature highlights</h2>
+<ul>
+<li>Nothing is required on host machine except Docker and Docker Compose</li>
+<li>Docker compose with <code>web</code> service (php7.2), <code>database</code> service (mysql 5.6) and <code>MySql client</code> service (adminer)</li>
+<li>Web service is pre-installed with composer, laravel cli, curl, vim and dnsutils package</li>
+</ul>
+<h2 id="code-structure">Code structure</h2>
+<ul>
+<li><code>Dockerfile</code>: steps to be run to set up the <code>web</code> service, please have a look to see what it installs</li>
+<li><code>docker-compose.yml</code>: Docker Compose file to define the 3 services <code>web</code>, <code>database</code> and <code>MySql client</code></li>
+</ul>
+<h2 id="usage">Usage</h2>
+<ul>
+<li>Put the 2 files <code>Dockerfile</code> and <code>docker-compose.yml</code> into your current project folder (in case you have already got 1 project set up) or an empty folder where your project is supposed to be placed.</li>
+<li>Run <code>docker-compose up -d</code>, after this step, there should be 3 containers up and running.</li>
+<li>Your current folder is mounted into <code>web</code> container's <code>/code</code> folder</li>
+<li>Run <code>docker exec -it &lt;web-service-container-name&gt; /bin/bash</code> to ssh into <code>web</code> service container.</li>
+<li>In case you do not have a Laravel project yet, create one by running <code>laravel new myfirstproject</code>.</li>
+<li>cd into <code>/code/myfirstproject</code>, start the web server by running <code>php artisan serve --host=0.0.0.0 --port=8000</code> (please notice the part <em>--host=0.0.0.0</em>)</li>
+<li>Access the Laravel web app from host machine by accessing <code>http://localhost:8000</code></li>
+<li>Set up MySql info for your Laravel app using the following info: <code>host: db, username: root, password: admin</code> (this password is set up in <code>docker-compose.yml</code></li>
+</ul>
+<h2 id="further-installation">Further installation</h2>
+<ul>
+<li>If you would like to install more services such as <code>redis</code>, just put the service config into docker-compose.yml and rebuild the containers using <code>docker-compose build</code></li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li>If you have ports conflicting, please change accordingly in the <code>Dockerfile</code> and <code>docker-compose.yml</code></li>
+<li>If you cannot access the web app from host machine, please be sure you set <code>--host=0.0.0.0</code> when running <code>php artisan serve</code></li>
+<li>If other issues occur, please report them <a href="https://github.com/vukhuu/laravel-docker/issues">here</a>.</li>
+</ul>
+</body></html>
